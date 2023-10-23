@@ -1,1 +1,2 @@
-"# GamiCoin - Unified Game Coin" 
+# GamiCoin - Unified Game Coin
+The goal of this project is to provide a unified cryptocurrency for every games that uses credit system or any kind of virtual currency for upgrading the players character or to purchase items in the game. This project is open source so then any game developer can embed GamiCoin wallets for the gamers, for this I will try to make the API simple so then the API requests for example creating new transaction  can be done quickly. I hope later on I can make this coin popular and trusted by many many game developers.
