@@ -22,6 +22,4 @@ const currentBlockData = [
     
 ]
 
-const nonce=888;
-
-console.log(GamiCoin.hashBlock(previousBlockHash,currentBlockData, nonce));
+console.log(GamiCoin.proofOfWork(previousBlockHash,currentBlockData))
