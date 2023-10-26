@@ -2,24 +2,11 @@ const Blockchain = require('./blockchain')
 
 const GamiCoin = new Blockchain();
 
-const previousBlockHash = 'sdfukgvzufztjztczt';
-const currentBlockData = [
-    {
-        amount: 100,
-        sender: 'cghcjchgfcjf',
-        recipient: 'fddghjjuhgcdd'
-    },
-    {
-        amount: 30,
-        sender: 'rtghhjj',
-        recipient: 'zuvkztcvz'
-    },
-    {
-        amount: 88,
-        sender: 'zfilvzzu',
-        recipient: 'ckzckckzt'
-    },
-    
-]
+GamiCoin.createNewTransaction(100,'lgo87flfvzo7', 'izg87foo8f');
+GamiCoin.createNewTransaction(10,'lgo87flweffvzo7', 'izg87foo8f');
+GamiCoin.createNewTransaction(130,'lgo87flfvzewfo7', 'izg87foo8f');
 
-console.log(GamiCoin.proofOfWork(previousBlockHash,currentBlockData))
+nonce = GamiCoin.proofOfWork(GamiCoin.getLastBlock().hash, GamiCoin.pendingTransactions);
+GamiCoin.createNewBlock(nonce,GamiCoin.getLastBlock().hash, GamiCoin.hashBlock(GamiCoin.getLastBlock().hash, GamiCoin.pendingTransactions,nonce) )
+
+console.log(GamiCoin.chain[1])
