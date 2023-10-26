@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const Blockchain = require('./blockchain');
+const uuid = require('uuid/v1');
+
+const nodeAddress= uuid().split('-').join('');
 
 const GamiCoin = new Blockchain();
 
@@ -13,12 +16,28 @@ app.get('/blockchain', function(req, res){
 });
 
 app.post('/transaction', function(req, res){
-    console.log(req.body);
-    res.send('The amount of transaction is '+ req.body.amount+' GamiCoin!')
+    blockIndex=GamiCoin.createNewTransaction(req.body.amount, req.body.sender, req.body.recipient);
+    res.json({note: 'Transaction will be added to block ' + blockIndex})
 });
 
 app.get('/mine', function(req, res){
+    const lastBlock = GamiCoin.getLastBlock();
+    const previousBlockHash = lastBlock['hash'];
+    const currentBlockData = {
+        transactions: GamiCoin.pendingTransactions,
+        index: lastBlock['index'] +1
+    }
+    const nonce = GamiCoin.proofOfWork(previousBlockHash, currentBlockData);
+    const blockHash = GamiCoin.hashBlock(previousBlockHash, currentBlockData, nonce);
+    GamiCoin.createNewTransaction(12.8, '00', nodeAddress);
+    const newBlock = GamiCoin.createNewBlock(nonce, previousBlockHash, blockHash);
+    
 
+    
+    res.json({
+        note: "New block mined..",
+        block: newBlock
+    })
 });
 
 
