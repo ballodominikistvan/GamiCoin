@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const Blockchain = require('./blockchain');
-const uuid = require('uuid/v1');
+const { v1: uuidv1 } = require('uuid');
 
-const nodeAddress= uuid().split('-').join('');
+const nodeAddress= uuidv1().split('-').join('');
 
 const GamiCoin = new Blockchain();
 
