@@ -9,4 +9,4 @@ GamiCoin.createNewTransaction(130,'lgo87flfvzewfo7', 'izg87foo8f');
 nonce = GamiCoin.proofOfWork(GamiCoin.getLastBlock().hash, GamiCoin.pendingTransactions);
 GamiCoin.createNewBlock(nonce,GamiCoin.getLastBlock().hash, GamiCoin.hashBlock(GamiCoin.getLastBlock().hash, GamiCoin.pendingTransactions,nonce) )
 
-console.log(GamiCoin.chain[1])
+console.log(GamiCoin.chain)
